@@ -227,8 +227,8 @@ struct NativeGeocoderOptions: Decodable {
                     let coordinates = NativeGeocoderForwardResult(
 						latitude: "\(latitude)", 
 						longitude: "\(longitude)",
-						featureName: "\featureName",
-						locality: "\locality"
+						featureName: "\(featureName)",
+						locality: "\(locality)"
 					)
                     resultObj.append(coordinates)
                 }
