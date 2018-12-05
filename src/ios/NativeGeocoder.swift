@@ -15,6 +15,8 @@ struct NativeGeocoderReverseResult: Encodable {
 struct NativeGeocoderForwardResult: Encodable {
     var latitude: String?
     var longitude: String?
+	var featureName: String?
+	var locality: String?
 }
 
 struct NativeGeocoderError {
@@ -218,9 +220,16 @@ struct NativeGeocoderOptions: Decodable {
             
             for i in 0..<maxResultObjects {
                 if let latitude = placemarks[i].location?.coordinate.latitude,
-                    let longitude = placemarks[i].location?.coordinate.longitude {
+                   let longitude = placemarks[i].location?.coordinate.longitude {
                 
-                    let coordinates = NativeGeocoderForwardResult(latitude: "\(latitude)", longitude: "\(longitude)")
+					let featureName = placemarks[i].name ?? ""
+					let locality = placemarks[i].locality ?? ""
+                    let coordinates = NativeGeocoderForwardResult(
+						latitude: "\(latitude)", 
+						longitude: "\(longitude)",
+						featureName: "\featureName",
+						locality: "\locality"
+					)
                     resultObj.append(coordinates)
                 }
             }
