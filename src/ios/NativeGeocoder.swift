@@ -224,13 +224,15 @@ struct NativeGeocoderOptions: Decodable {
                 
 					let featureName = placemarks[i].name ?? ""
 					let locality = placemarks[i].locality ?? ""
-                    let coordinates = NativeGeocoderForwardResult(
+					let country = placemarks[i].country ?? ""
+                    let locationData = NativeGeocoderForwardResult(
 						latitude: "\(latitude)", 
 						longitude: "\(longitude)",
 						featureName: "\(featureName)",
-						locality: "\(locality)"
+						locality: "\(locality)",
+						country: "\(country)"
 					)
-                    resultObj.append(coordinates)
+                    resultObj.append(locationData)
                 }
             }
             
