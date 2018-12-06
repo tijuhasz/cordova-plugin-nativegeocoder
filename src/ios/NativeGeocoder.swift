@@ -18,6 +18,7 @@ struct NativeGeocoderForwardResult: Encodable {
 	var featureName: String?
 	var locality: String?
 	var country: String?
+	var countryCode: String?
 }
 
 struct NativeGeocoderError {
@@ -226,12 +227,14 @@ struct NativeGeocoderOptions: Decodable {
 					let featureName = placemarks[i].name ?? ""
 					let locality = placemarks[i].locality ?? ""
 					let country = placemarks[i].country ?? ""
+					let countryCode = placemarks[i].isoCountryCode ?? ""
                     let locationData = NativeGeocoderForwardResult(
 						latitude: "\(latitude)", 
 						longitude: "\(longitude)",
 						featureName: "\(featureName)",
 						locality: "\(locality)",
-						country: "\(country)"
+						country: "\(country)",
+						countryCode: "\(countryCode)"
 					)
                     resultObj.append(locationData)
                 }
