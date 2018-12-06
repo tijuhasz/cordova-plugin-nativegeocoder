@@ -163,22 +163,18 @@ public class NativeGeocoder extends CordovaPlugin {
 
                     try {
                         String latitude = String.valueOf(address.getLatitude());
-                        String longitude = String.valueOf(address.getLongitude());
-						String featureName = String.valueOf(address.getFeatureName());
-						String locality = String.valueOf(address.getLocality());
-						String country = String.valueOf(address.getCountryName());
+                        String longitude = String.valueOf(address.getLongitude());						
+						String featureName = address.getFeatureName() != null ? address.getFeatureName() : "";
+						String locality = address.getLocality() != null ? address.getLocality() : "";
+						String country = address.getCountryName() != null ? address.getCountryName() : "";
 						
                         if (!latitude.isEmpty() && !longitude.isEmpty()) {
                             JSONObject addressData = new JSONObject();
                             addressData.put("latitude", latitude);
                             addressData.put("longitude", longitude);
-							if (!featureName.isEmpty()) {
-								addressData.put("featureName", featureName);
-							}
-							if (!locality.isEmpty()) {
-								addressData.put("locality", locality);
-							}
-								
+							addressData.put("featureName", featureName);
+							addressData.put("locality", locality);
+							addressData.put("country", country);
                             resultObj.put(addressData);
                         }
                     }

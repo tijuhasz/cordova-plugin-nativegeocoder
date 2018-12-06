@@ -17,6 +17,7 @@ struct NativeGeocoderForwardResult: Encodable {
     var longitude: String?
 	var featureName: String?
 	var locality: String?
+	var country: String?
 }
 
 struct NativeGeocoderError {
